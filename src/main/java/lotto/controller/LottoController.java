@@ -1,8 +1,10 @@
 package lotto.controller;
 
+import java.util.List;
 import java.util.function.Supplier;
 import lotto.model.LottoTicket;
 import lotto.model.Money;
+import lotto.model.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,6 +17,8 @@ public class LottoController {
         int quantity = money.getPurchaseQuantity();
 
         LottoTicket lottoTicket = setLottoTicket(quantity);
+
+        WinningNumbers winningNumbers = retryIfErrorOccur(this::setWinningNumbers);
     }
 
     private Money setMoney() {
@@ -26,6 +30,12 @@ public class LottoController {
         lottoTicket.purchaseLottoTicket(quantity);
         outputView.purchaseLotto(lottoTicket.getLottoTicket());
         return lottoTicket;
+    }
+
+    private WinningNumbers setWinningNumbers() {
+        List<Integer> winningNumber = inputView.winningNumbers();
+        int bonusNumber = inputView.bonusNumber();
+        return new WinningNumbers(winningNumber, bonusNumber);
     }
 
     private <T> T retryIfErrorOccur(Supplier<T> supplier) {
