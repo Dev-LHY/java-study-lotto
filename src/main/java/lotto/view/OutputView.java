@@ -12,8 +12,17 @@ public class OutputView {
         }
     }
 
-    public void resultOfWinning(Integer[] winningStatisticsCount) {
+    public void result(Integer[] winningStatisticsCount, double rateOfReturn) {
+        resultOfWinning(winningStatisticsCount);
+        rateOfReturn(rateOfReturn);
+    }
+
+    private void resultOfWinning(Integer[] winningStatisticsCount) {
         System.out.println(System.lineSeparator() +
                 OutputMessage.WINNING_STATISTICS.getFormatMessage((Object[]) winningStatisticsCount));
+    }
+
+    private void rateOfReturn(double rateOfReturn) {
+        System.out.println(OutputMessage.RATE_OF_RETURN.getFormatMessage(rateOfReturn));
     }
 }
