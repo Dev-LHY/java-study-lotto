@@ -21,4 +21,8 @@ public class Money {
     public int getPurchaseQuantity() {
         return money / MONEY_UNIT;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
