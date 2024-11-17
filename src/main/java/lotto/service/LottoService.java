@@ -3,11 +3,25 @@ package lotto.service;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import lotto.model.Lotto;
 import lotto.model.Rank;
+import lotto.model.WinningNumbers;
 
 public class LottoService {
     private static final int SCALING_FACTOR = 100;
     private final Map<Rank, Integer> winningStatistics = new LinkedHashMap<>();
+
+    public void createWinningStatistics(List<Lotto> lottos, WinningNumbers winningNumbers) {
+        initializeWinningStatistics();
+        List<Integer> winningNumber = winningNumbers.getWinningNumbers();
+        int bonusNumber = winningNumbers.getBonusNumber();
+        for (Lotto lotto : lottos) {
+            List<Integer> numbers = lotto.getNumbers();
+            int matchCount = getMatchCount(numbers, winningNumber);
+            boolean isBonusMatch = isBonusMatch(numbers, bonusNumber);
+            updateWinningStatistics(matchCount, isBonusMatch);
+        }
+    }
 
     public Integer[] getWinningStatisticsCount() {
         Integer[] winningStatisticsCount = new Integer[5];
