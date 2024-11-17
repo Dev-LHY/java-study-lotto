@@ -6,6 +6,12 @@ import java.util.List;
 public class LottoTicket {
     private final List<Lotto> lottoTicket = new ArrayList<>();
 
+    public void purchaseLottoTicket(int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            addLotto(new Lotto(Lotto.generateLotto()));
+        }
+    }
+
     public void addLotto(Lotto lotto) {
         lottoTicket.add(lotto);
     }
