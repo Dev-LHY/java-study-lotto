@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.exception.ExceptionMessage;
 
 public class Lotto {
     private static final int LOTTO_START_NUMBER = 1;
@@ -19,6 +20,10 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        }
+
+        if (numbers.stream().distinct().count() != LOTTO_COUNT) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_LOTTO_NUMBER.getMessage());
         }
     }
 
