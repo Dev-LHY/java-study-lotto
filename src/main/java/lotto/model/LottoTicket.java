@@ -12,7 +12,7 @@ public class LottoTicket {
         }
     }
 
-    public void addLotto(Lotto lotto) {
+    private void addLotto(Lotto lotto) {
         lottoTicket.add(lotto);
     }
 
