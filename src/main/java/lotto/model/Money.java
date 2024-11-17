@@ -8,14 +8,14 @@ public class Money {
     private final int money;
 
     public Money(int money) {
+        validateMoney(money);
         this.money = money;
     }
 
-    private int validateMoney(int money) {
+    private void validateMoney(int money) {
         if (money % MONEY_UNIT != MONEY_TEST_RESULT) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_MONEY_UNIT.getMessage());
         }
-        return money;
     }
 
     public int getPurchaseQuantity() {
