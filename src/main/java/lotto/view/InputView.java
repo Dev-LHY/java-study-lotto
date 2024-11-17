@@ -33,4 +33,16 @@ public class InputView {
         }
         return winningNumbers;
     }
+
+    public int bonusNumber() {
+        System.out.println(OutputMessage.INPUT_BONUS_NUMBER.getMessage());
+        String input = Console.readLine();
+        int bonusNumber = 0;
+        try {
+            bonusNumber = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException(ExceptionMessage.INVALID_INPUT.getMessage());
+        }
+        return bonusNumber;
+    }
 }
