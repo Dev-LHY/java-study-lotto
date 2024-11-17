@@ -19,4 +19,8 @@ public class LottoService {
                 .filter(winningNumber::contains)
                 .count();
     }
+
+    private boolean isBonusMatch(List<Integer> numbers, int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
