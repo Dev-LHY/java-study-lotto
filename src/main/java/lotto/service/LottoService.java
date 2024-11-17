@@ -8,6 +8,16 @@ import lotto.model.Rank;
 public class LottoService {
     private final Map<Rank, Integer> winningStatistics = new LinkedHashMap<>();
 
+    public Integer[] getWinningStatisticsCount() {
+        Integer[] winningStatisticsCount = new Integer[5];
+        int i = 0;
+        for (Rank rank : Rank.values()) {
+            winningStatisticsCount[i] = winningStatistics.get(rank);
+            i++;
+        }
+        return winningStatisticsCount;
+    }
+
     private void initializeWinningStatistics() {
         for (Rank rank : Rank.values()) {
             winningStatistics.put(rank, 0);
