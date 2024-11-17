@@ -17,4 +17,8 @@ public class Money {
         }
         return money;
     }
+
+    public int getPurchaseQuantity() {
+        return money / MONEY_UNIT;
+    }
 }
