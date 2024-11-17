@@ -6,6 +6,7 @@ import java.util.Map;
 import lotto.model.Rank;
 
 public class LottoService {
+    private static final int SCALING_FACTOR = 100;
     private final Map<Rank, Integer> winningStatistics = new LinkedHashMap<>();
 
     public Integer[] getWinningStatisticsCount() {
@@ -16,6 +17,14 @@ public class LottoService {
             i++;
         }
         return winningStatisticsCount;
+    }
+
+    public double getRateOfReturn(int money) {
+        double totalPrize = 0;
+        for (Rank rank : Rank.values()) {
+            totalPrize += (rank.getPrize() * winningStatistics.get(rank));
+        }
+        return (totalPrize / money) * SCALING_FACTOR;
     }
 
     private void initializeWinningStatistics() {
