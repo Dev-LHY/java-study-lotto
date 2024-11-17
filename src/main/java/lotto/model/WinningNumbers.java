@@ -12,6 +12,7 @@ public class WinningNumbers {
 
     public WinningNumbers(List<Integer> winningNumbers, int bonusNumber) {
         validateWinningNumbers(winningNumbers);
+        validateBonusNumber(winningNumbers, bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
