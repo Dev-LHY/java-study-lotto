@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import lotto.model.LottoTicket;
 import lotto.model.Money;
 import lotto.model.WinningNumbers;
+import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -19,6 +20,8 @@ public class LottoController {
         LottoTicket lottoTicket = setLottoTicket(quantity);
 
         WinningNumbers winningNumbers = retryIfErrorOccur(this::setWinningNumbers);
+
+        winningStatistics(lottoTicket, winningNumbers, money);
     }
 
     private Money setMoney() {
@@ -36,6 +39,16 @@ public class LottoController {
         List<Integer> winningNumber = inputView.winningNumbers();
         int bonusNumber = inputView.bonusNumber();
         return new WinningNumbers(winningNumber, bonusNumber);
+    }
+
+    private void winningStatistics(LottoTicket lottoTicket, WinningNumbers winningNumbers, Money money) {
+        LottoService lottoService = new LottoService();
+        lottoService.createWinningStatistics(lottoTicket.getLottoTicket(), winningNumbers);
+
+        Integer[] winningStatisticsCount = lottoService.getWinningStatisticsCount();
+        double rateOfReturn = lottoService.getRateOfReturn(money.getMoney());
+
+        outputView.result(winningStatisticsCount, rateOfReturn);
     }
 
     private <T> T retryIfErrorOccur(Supplier<T> supplier) {
