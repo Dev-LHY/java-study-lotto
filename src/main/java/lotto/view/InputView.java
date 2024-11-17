@@ -15,7 +15,7 @@ public class InputView {
         try {
             money = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new RuntimeException(ExceptionMessage.INVALID_INPUT.getMessage());
+            throw new NumberFormatException(ExceptionMessage.INVALID_INPUT.getMessage());
         }
         return money;
     }
