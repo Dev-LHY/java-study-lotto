@@ -1,8 +1,13 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
+    private static final int LOTTO_START_NUMBER = 1;
+    private static final int LOTTO_END_NUMBER = 45;
+    private static final int LOTTO_COUNT = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,5 +21,9 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public static List<Integer> generateLotto() {
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_COUNT);
+        Collections.sort(lotto);
+        return lotto;
+    }
 }
