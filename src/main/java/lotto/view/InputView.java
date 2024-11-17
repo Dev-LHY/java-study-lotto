@@ -22,7 +22,7 @@ public class InputView {
 
     public List<Integer> winningNumbers() {
         List<Integer> winningNumbers = new ArrayList<>();
-        System.out.println(OutputMessage.INPUT_WINNING_NUMBERS.getMessage());
+        System.out.println(System.lineSeparator() + OutputMessage.INPUT_WINNING_NUMBERS.getMessage());
         String input = Console.readLine();
         try {
             for (String number : input.split(WINNING_NUMBERS_DELIMITER)) {
@@ -35,7 +35,7 @@ public class InputView {
     }
 
     public int bonusNumber() {
-        System.out.println(OutputMessage.INPUT_BONUS_NUMBER.getMessage());
+        System.out.println(System.lineSeparator() + OutputMessage.INPUT_BONUS_NUMBER.getMessage());
         String input = Console.readLine();
         int bonusNumber = 0;
         try {
