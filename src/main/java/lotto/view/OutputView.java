@@ -11,4 +11,9 @@ public class OutputView {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public void resultOfWinning(Integer[] winningStatisticsCount) {
+        System.out.println(System.lineSeparator() +
+                OutputMessage.WINNING_STATISTICS.getFormatMessage((Object[]) winningStatisticsCount));
+    }
 }
